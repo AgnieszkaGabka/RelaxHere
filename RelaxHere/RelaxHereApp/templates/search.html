@@ -5,6 +5,15 @@
     <title>Title</title>
 </head>
 <body>
+<div class="w3-bar w3-large w3-black">
+  <div Find the perfect place to relax </div>
+
+<form class="w3-container" action="/search-results/" method="post">
+  {% csrf_token %}
+  <br><br>
+  <lable>City :</lable> <input class="w3-input" type="text" name="city"><br><br>
+  <input class="w3-btn w3-green" type="submit" value="search">
+</form>
 
 </body>
 </html>
