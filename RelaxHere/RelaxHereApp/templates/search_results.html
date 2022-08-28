@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="w3-bar w3-large w3-black">
+  <div Best places for you to relax are right here! </div>
+
+<h4 class="w3-center" style="padding-top:50">Search Results</h4>
+
+<div class="w3-center" style="padding:100px;">
+<table class="w3-table w3-striped w3-center w3-large">
+  {% for place in places_list %}
+    <tr>
+      <td style="padding:20">item : {{place.name}}</td>
+      <td style="padding:20">user renting : {{place.visit_from}}</td>
+      <td style="padding:20">category : {{place.visit_to}}</td>
+      <td style="padding:20">available from : {{place.climate}}</td>
+      <td style="padding:20">available to : {{place.activities}}</td>
+      <td style="padding:20">Price per day : {{place.children_friendly}}</td>
+      <td style="padding:20">Price per day : {{place.scenery}}</td>
+      <td style="padding:20">Price per day : {{place.continent}}</td>
+      <td style="padding:20">Price per day : {{place.long_stay}}</td>
+      <td style="padding:20">Price per day : {{place.short_stay}}</td>
+      <td style="padding:20"><form action = "/rent/" method="post">
+          {% csrf_token %}
+          </form>
+      </td style="padding:20">
+    </tr>
+  {% endfor %}
+</table>
+</div>
+{% endblock %}

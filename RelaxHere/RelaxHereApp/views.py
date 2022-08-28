@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.views import View
 
+from .forms import PlaceForm
+
 
 class HomePageView(View):
     def get(self, request):
-        form = ToRentForm()
+        form = PlaceForm()
         return render(request, 'home_page.html', {'form': form})
 
 
@@ -14,14 +16,18 @@ def search(request):
 
 def search_results(request):
     place = request.POST['place']
-    items_list = []
-    try:
-        area = Area.objects.get(city=city)
-    except Area.DoesNotExist:
-        return render(request, 'search.html')
-    items = ToRent.objects.filter(area=area)
-    for item in items:
-        if item.is_available:
-            items_list.append(item)
-    return render(request, 'search_results.html', {'items_list': items_list})
+    visit_from = request.POST['visit_from']
+    visit_to = request.POST['visit_to']
+    climate = request.POST['climate']
+    activities = request.POST['activities']
+    children_friendly = request.POST['children_friendly']
+    scenery = request.POST['scenery']
+    continent = request.POST['continent']
+    long_stay = request.POST['long_stay']
+    short_stay = request.POST['short_stay']
+    places_list = []
+    if places_list:
+        return render(request, 'search_results.html', {'places_list': places_list})
+    else:
+        return render(request, 'search_failed.html')
 

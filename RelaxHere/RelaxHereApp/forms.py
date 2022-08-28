@@ -1,6 +1,6 @@
 from django import forms
 
-from RelaxHere.RelaxHereApp.models import Place
+from .models import Place
 
 
 class PlaceForm(forms.Form):
