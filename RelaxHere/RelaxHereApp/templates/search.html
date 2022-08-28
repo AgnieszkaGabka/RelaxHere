@@ -1,3 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,10 +13,29 @@
 
 <form class="w3-container" action="/search-results/" method="post">
   {% csrf_token %}
+  <label>Name of the place :</label> <input class="w3-input" type="text" name="place" value="If you have specific place in mind, put it here"><br><br>
   <br><br>
-  <lable>City :</lable> <input class="w3-input" type="text" name="city"><br><br>
+  <label>Arrive on :</label> <input class="w3-input" type="text" name="visit_from" value="When do you want to arrive?"><br><br>
+  <br><br>
+  <label>Depart on :</label> <input class="w3-input" type="text" name="visit_to" value="When do you want to depart?"><br><br>
+  <br><br>
+  <label>Climate :</label> <input class="w3-input" type="text" name="climate" value="choose the preferred climate for you"><br><br>
+  <br><br>
+  <label>Activities :</label> <input class="w3-input" type="text" name="activities" value="choose the activities you want to do"><br><br>
+  <br><br>
+  <label>Activities for children :</label> <input class="w3-input" type="text" name="children_friendly" value="Have children? Find out if this place is good for them"><br><br>
+  <br><br>
+  <label>Scenery :</label> <input class="w3-input" type="text" name="scenery" value="Choose your preferred scenery"><br><br>
+  <br><br>
+  <label>Continent :</label> <input class="w3-input" type="text" name="continent" value="Have a specific continent in mind? Choose it here"><br><br>
+  <br><br>
+  <label>Recommended for long stay? :</label> <input class="w3-input" type="text" name="long_stay" value="Find out if this place is good for long stay"><br><br>
+  <br><br>
+  <label>Recommended for short stay? :</label> <input class="w3-input" type="text" name="short_stay" value="Find out if this place is good for short stay"><br><br>
+  <br><br>
   <input class="w3-btn w3-green" type="submit" value="search">
 </form>
 
 </body>
 </html>
+{% endblock %}

@@ -103,5 +103,5 @@ class Place(models.Model):
     children_friendly = models.ForeignKey(ChildrenActivities, on_delete=models.SET_NULL, null=True)
     scenery = models.ForeignKey(Scenery, on_delete=models.SET_NULL, null=True)
     continent = models.ForeignKey(Continent, on_delete=models.SET_NULL, null=True)
-    long_stay = models.CharField(max_length=255)
-    short_stay = models.CharField(max_length=255)
+    long_stay = models.BooleanField()
+    short_stay = models.BooleanField()
