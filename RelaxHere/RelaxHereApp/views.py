@@ -1,7 +1,10 @@
+from urllib import request
+
 from django.shortcuts import render
 from django.views import View
-
+from django.db.models import Q
 from .forms import PlaceForm
+from .models import Place
 
 
 class HomePageView(View):
@@ -14,20 +17,36 @@ def search(request):
     return render(request, 'search.html')
 
 
-def search_results(request):
-    place = request.POST['place']
-    visit_from = request.POST['visit_from']
-    visit_to = request.POST['visit_to']
-    climate = request.POST['climate']
-    activities = request.POST['activities']
-    children_friendly = request.POST['children_friendly']
-    scenery = request.POST['scenery']
-    continent = request.POST['continent']
-    long_stay = request.POST['long_stay']
-    short_stay = request.POST['short_stay']
-    places_list = []
-    if places_list:
-        return render(request, 'search_results.html', {'places_list': places_list})
-    else:
-        return render(request, 'search_failed.html')
+class SearchResultsView(View):
+    def get(self, request):
+        form = PlaceForm()
+        return render(request, 'search.html', {'form': form})
+
+    def post(self, request):
+        form = PlaceForm(request.POST)
+        places_list = []
+        if form.data['place']:
+            place = request.POST['place']
+        if form.data['visit_from']:
+            visit_from = request.POST['visit_from']
+        if form.data['visit_to']:
+            visit_to = request.POST['visit_to']
+        if form.data['climate']:
+            climate = request.POST['climate']
+        if form.data['activities']:
+            activities = request.POST['activities']
+        if form.data['children_friendly']:
+            children_friendly = request.POST['children_friendly']
+        if form.data['scenery']:
+            scenery = request.POST['scenery']
+        if form.data['continent']:
+            continent = request.POST['continent']
+        if form.data['long_stay']:
+            long_stay = request.POST['long_stay']
+        if form.data['short_stay']:
+            short_stay = request.POST['short_stay']
+        if places_list:
+            return render(request, 'search_results.html', {'places_list': places_list})
+        else:
+            return render(request, 'search_failed.html')
 

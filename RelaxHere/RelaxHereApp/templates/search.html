@@ -11,6 +11,13 @@
 <div class="w3-bar w3-large w3-black">
   <div Find the perfect place to relax </div>
 
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Search">
+</form>
+<!--
 <form class="w3-container" action="/search-results/" method="post">
   {% csrf_token %}
   <label>Name of the place :</label> <input class="w3-input" type="text" name="place" value="If you have specific place in mind, put it here"><br><br>
@@ -35,6 +42,7 @@
   <br><br>
   <input class="w3-btn w3-green" type="submit" value="search">
 </form>
+-->
 
 </body>
 </html>

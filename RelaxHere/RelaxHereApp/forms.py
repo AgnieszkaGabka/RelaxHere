@@ -3,11 +3,10 @@ from django import forms
 from .models import Place
 
 
-class PlaceForm(forms.Form):
+class PlaceForm(forms.ModelForm):
 
-    model = Place
-    fields = ("name", "visit_from", "visit_to", "climate", "activities", "children_frinedly", "scenery", "continent", "long_stay", "short_stay")
+    class Meta:
+        model = Place
+        fields = ("name", "visit_from", "visit_to", "climate", "activities", "children_friendly", "scenery", "continent",
+              "long_stay", "short_stay")
 
-    def __init__(self, *args, **kwargs):
-        user = kwargs.pop('')
-        super(PlaceForm, self).__init__(*args, **kwargs)

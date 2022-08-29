@@ -17,9 +17,10 @@ from django.contrib import admin
 from django.urls import path
 
 from RelaxHereApp import views
+from RelaxHereApp.views import SearchResultsView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('search/', views.search, name='search'),
-    path('search-results/', views.search_results, name='search_results'),
+    path('search/', SearchResultsView.as_view(), name='search'),
+    #path('search-results/', views.search_results, name='search_results'),
 ]
