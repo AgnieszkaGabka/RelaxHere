@@ -25,26 +25,57 @@ class SearchResultsView(View):
     def post(self, request):
         form = PlaceForm(request.POST)
         places_list = []
-        if form.data['place']:
+        factors = []
+        if 'place' in request.POST:
             place = request.POST['place']
-        if form.data['visit_from']:
+            places = Place.objects.filter(name=place)
+            if places:
+                places_list.append(places)
+        if 'visit_from' in request.POST:
             visit_from = request.POST['visit_from']
-        if form.data['visit_to']:
+            places = Place.objects.filter(visit_from=visit_from)
+            if places:
+                places_list.append(places)
+        if 'visit_to' in request.POST:
             visit_to = request.POST['visit_to']
-        if form.data['climate']:
+            places = Place.objects.filter(visit_to=visit_to)
+            if places:
+                places_list.append(places)
+        if 'climate' in request.POST:
             climate = request.POST['climate']
-        if form.data['activities']:
+            places = Place.objects.filter(climate=climate)
+            if places:
+                places_list.append(places)
+        if 'activities' in request.POST:
             activities = request.POST['activities']
-        if form.data['children_friendly']:
+            places = Place.objects.filter(activities=activities)
+            if places:
+                places_list.append(places)
+        if 'children_friendly' in request.POST:
             children_friendly = request.POST['children_friendly']
-        if form.data['scenery']:
+            places = Place.objects.filter(children_friendly=children_friendly)
+            if places:
+                places_list.append(places)
+        if 'scenery' in request.POST:
             scenery = request.POST['scenery']
-        if form.data['continent']:
+            places = Place.objects.filter(scenery=scenery)
+            if places:
+                places_list.append(places)
+        if 'continent' in request.POST:
             continent = request.POST['continent']
-        if form.data['long_stay']:
+            places = Place.objects.filter(continent=continent)
+            if places:
+                places_list.append(places)
+        if 'long_stay' in request.POST:
             long_stay = request.POST['long_stay']
-        if form.data['short_stay']:
+            places = Place.objects.filter(long_stay=long_stay)
+            if places:
+                places_list.append(places)
+        if 'short_stay' in request.POST:
             short_stay = request.POST['short_stay']
+            places = Place.objects.filter(short_stay=short_stay)
+            if places:
+                places_list.append(places)
         if places_list:
             return render(request, 'search_results.html', {'places_list': places_list})
         else:
