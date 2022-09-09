@@ -4,7 +4,6 @@ from .models import Place, CLIMATE, ACTIVITY, CHILDREN_ACTIVITY, SCENERY, CONTIN
 
 
 class PlaceForm(forms.Form):
-    name = forms.CharField(required=False)
     visit_from = forms.DateField(required=False)
     visit_to = forms.DateField(required=False)
     climate = forms.MultipleChoiceField(choices=CLIMATE, widget=forms.SelectMultiple(), required=False)

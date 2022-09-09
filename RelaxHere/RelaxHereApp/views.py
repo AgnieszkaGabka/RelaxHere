@@ -25,12 +25,6 @@ class SearchResultsView(View):
     def post(self, request):
         form = PlaceForm(request.POST)
         places_list = []
-        factors = []
-        if 'place' in form:
-            place = request.POST['place']
-            places = Place.objects.filter(name=place)
-            if places:
-                places_list.append(places)
         if 'visit_from' in form:
             visit_from = request.POST['visit_from']
             places = Place.objects.filter(visit_from=visit_from)
@@ -78,6 +72,5 @@ class SearchResultsView(View):
                 places_list.append(places)
         if places_list:
             return render(request, 'search_results.html', {'places_list': places_list})
-        else:
-            return render(request, 'search_failed.html')
+        return render(request, 'search_failed.html')
 
