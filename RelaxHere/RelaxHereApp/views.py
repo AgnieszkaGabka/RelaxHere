@@ -25,14 +25,10 @@ class SearchResultsView(View):
     def post(self, request):
         form = PlaceForm(request.POST)
         places_list = []
-        if 'visit_from' in form:
+        if 'visit_from' in form and 'visit_to' in form:
             visit_from = request.POST['visit_from']
-            places = Place.objects.filter(visit_from=visit_from)
-            if places:
-                places_list.append(places)
-        if 'visit_to' in form:
-            visit_to = request.POST['visit_to']
-            places = Place.objects.filter(visit_to=visit_to)
+            visit_to = request.POST('visit_to')
+            places = Place.objects.filter(visit_from__gte=visit_from, visit_to__lte=visit_to)
             if places:
                 places_list.append(places)
         if 'climate' in form:
