@@ -78,21 +78,9 @@ CONTINENT = (
 class Scenery(models.Model):
     type = models.IntegerField(choices=SCENERY)
 
-    class Meta:
-        verbose_name_plural = 'Sceneries'
-
-    def __str__(self):
-        return self.name
-
 
 class Activities(models.Model):
     activity = models.IntegerField(choices=ACTIVITY)
-
-    class Meta:
-        verbose_name_plural = 'Activities'
-
-    def __str__(self):
-        return self.name
 
 
 class Climate(models.Model):
@@ -101,12 +89,6 @@ class Climate(models.Model):
 
 class ChildrenActivities(models.Model):
     children_activity = models.IntegerField(choices=CHILDREN_ACTIVITY)
-
-    class Meta:
-        verbose_name_plural = 'Children Activities'
-
-    def __str__(self):
-        return self.name
 
 
 class Continent(models.Model):
