@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.db import models
 
 MONTH = (
@@ -97,8 +99,8 @@ class Continent(models.Model):
 
 class Place(models.Model):
     name = models.CharField(max_length=255)
-    visit_from = models.DateField(blank=True)
-    visit_to = models.DateField(blank=True)
+    visit_from = models.DateField(blank=True, default=datetime.now)
+    visit_to = models.DateField(blank=True, default=datetime.now)
     climate = models.ForeignKey(Activities, on_delete=models.SET_NULL, null=True)
     activities = models.ForeignKey(Climate, on_delete=models.SET_NULL, null=True)
     children_friendly = models.ForeignKey(ChildrenActivities, on_delete=models.SET_NULL, null=True)

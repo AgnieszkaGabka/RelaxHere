@@ -10,17 +10,16 @@
 <table class="w3-table w3-striped w3-center w3-large">
   {% for place in places_list %}
     <tr>
-      <td style="padding:20">item : {{place.name}}</td>
-      <td style="padding:20">user renting : {{place.visit_from}}</td>
-      <td style="padding:20">category : {{place.visit_to}}</td>
-      <td style="padding:20">available from : {{place.climate}}</td>
-      <td style="padding:20">available to : {{place.activities}}</td>
-      <td style="padding:20">Price per day : {{place.children_friendly}}</td>
-      <td style="padding:20">Price per day : {{place.scenery}}</td>
-      <td style="padding:20">Price per day : {{place.continent}}</td>
-      <td style="padding:20">Price per day : {{place.long_stay}}</td>
-      <td style="padding:20">Price per day : {{place.short_stay}}</td>
-      <td style="padding:20"><form action = "/rent/" method="post">
+      <td style="padding:20">place name : {{place.name}}</td>
+      <td style="padding:20">visit from : {{place.visit_from}}</td>
+      <td style="padding:20">visit to : {{place.visit_to}}</td>
+      <td style="padding:20">climate : {{place.climate}}</td>
+      <td style="padding:20">activities : {{place.activities}}</td>
+      <td style="padding:20">Children-friendly activities : {{place.children_friendly}}</td>
+      <td style="padding:20">Scenery : {{place.scenery}}</td>
+      <td style="padding:20">Continent : {{place.continent}}</td>
+      <td style="padding:20">Long stay? : {{place.long_stay}}</td>
+      <td style="padding:20">Shot stay?: {{place.short_stay}}</td>
           {% csrf_token %}
           </form>
       </td style="padding:20">

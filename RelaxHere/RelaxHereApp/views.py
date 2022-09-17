@@ -1,5 +1,5 @@
 from urllib import request
-
+from django.contrib import messages
 from django.shortcuts import render
 from django.views import View
 from django.db.models import Q
@@ -25,37 +25,31 @@ class SearchResultsView(View):
     def post(self, request):
         form = PlaceForm(request.POST)
         places_list = []
-        if 'visit_from' in form and 'visit_to' in form:
-            visit_from = request.POST['visit_from']
-            visit_to = request.POST('visit_to')
-            places = Place.objects.filter(visit_from__gte=visit_from, visit_to__lte=visit_to)
-            if places:
-                places_list.append(places)
-        if 'climate' in form:
-            climate = request.POST['climate']
-            places = Place.objects.filter(climate=climate)
-            if places:
-                places_list.append(places)
-        if 'activities' in form:
-            activities = request.POST['activities']
-            places = Place.objects.filter(activities=activities)
-            if places:
-                places_list.append(places)
-        if 'children_friendly' in form:
-            children_friendly = request.POST['children_friendly']
-            places = Place.objects.filter(children_friendly=children_friendly)
-            if places:
-                places_list.append(places)
-        if 'scenery' in form:
-            scenery = request.POST['scenery']
-            places = Place.objects.filter(scenery=scenery)
-            if places:
-                places_list.append(places)
-        if 'continent' in form:
-            continent = request.POST['continent']
-            places = Place.objects.filter(continent=continent)
-            if places:
-                places_list.append(places)
+        visit_from = request.POST['visit_from']
+        visit_to = request.POST['visit_to']
+        places = Place.objects.filter(visit_from__gte=visit_from, visit_to__lte=visit_to)
+        if places:
+            places_list.append(places)
+        climate = request.POST['climate']
+        places = Place.objects.filter(climate=climate)
+        if places:
+            places_list.append(places)
+        activities = request.POST['activities']
+        places = Place.objects.filter(activities=activities)
+        if places:
+            places_list.append(places)
+        children_friendly = request.POST['children_friendly']
+        places = Place.objects.filter(children_friendly=children_friendly)
+        if places:
+            places_list.append(places)
+        scenery = request.POST['scenery']
+        places = Place.objects.filter(scenery=scenery)
+        if places:
+            places_list.append(places)
+        continent = request.POST['continent']
+        places = Place.objects.filter(continent=continent)
+        if places:
+            places_list.append(places)
         if 'long_stay' in form:
             long_stay = request.POST['long_stay']
             places = Place.objects.filter(long_stay=long_stay)
